@@ -16,13 +16,21 @@
   "devDependencies": {
     "@vue/babel-preset-app": "^3.0.0-alpha.3",
     "@vue/cli-plugin-babel": "^3.0.0-alpha.3",
-    "@vue/cli-service": "^3.0.0-alpha.3",
-    "vue-template-compiler": "^2.5.13",
     "@vue/cli-plugin-eslint": "^3.0.0-alpha.3",
-    "eslint-plugin-vue": "^4.2.0"
+    "@vue/cli-service": "^3.0.0-alpha.3",
+    "eslint-plugin-vue": "^4.2.0",
+    "vue-template-compiler": "^2.5.13"
   },
   "vue": {
-    "lintOnSave": true
+    "lintOnSave": true,
+    "dll": [
+      "codemirror/mode/vue/vue.js",
+      "vue-codemirror",
+      "vue",
+      "vue-template-es2015-compiler",
+      "js-beautify",
+      "lodash.debounce"
+    ]
   },
   "eslintConfig": {
     "extends": [

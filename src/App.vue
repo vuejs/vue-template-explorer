@@ -112,8 +112,10 @@ export default {
       mirrors.forEach(m => m.style.height = height + 'px')
     },
     compileServer() {
+      Vue.config.silent = true
       const vm = new Vue({template: this.input})
       renderVueComponentToString(vm, () => {})
+      Vue.config.silent = false
       return vm.$options.render.toString()
     }
   }
