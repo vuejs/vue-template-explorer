@@ -7,13 +7,28 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "vue": "^2.5.13"
+    "js-beautify": "^1.7.5",
+    "lodash.debounce": "^4.0.8",
+    "vue": "^2.5.13",
+    "vue-codemirror": "^4.0.3",
+    "vue-template-es2015-compiler": "^1.6.0"
   },
   "devDependencies": {
     "@vue/babel-preset-app": "^3.0.0-alpha.3",
     "@vue/cli-plugin-babel": "^3.0.0-alpha.3",
     "@vue/cli-service": "^3.0.0-alpha.3",
-    "vue-template-compiler": "^2.5.13"
+    "vue-template-compiler": "^2.5.13",
+    "@vue/cli-plugin-eslint": "^3.0.0-alpha.3",
+    "eslint-plugin-vue": "^4.2.0"
+  },
+  "vue": {
+    "lintOnSave": true
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ]
   },
   "babel": {
     "presets": [
