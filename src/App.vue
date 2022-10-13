@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Vue Template Explorer (Vue version: {{version}})</h1>
+    <h1>Vue 2 Template Explorer (Vue version: {{version}})</h1>
     <label class="with-toggle">
       <input type="checkbox" v-model="stripWith">
       Strip with?
