@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="shortcut icon" href="<%= webpackConfig.output.publicPath %>favicon.ico">
+    <link rel="shortcut icon" href="./favicon.ico">
     <title>Vue Template Explorer</title>
-    <script src="https://unpkg.com/vue@latest"></script>
+    <script src="https://unpkg.com/vue@2.5"></script>
     <script src="https://unpkg.com/vue-template-compiler@latest/browser.js"></script>
     <script src="https://unpkg.com/vue-server-renderer@latest/basic.js"></script>
   </head>
   <body>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>
