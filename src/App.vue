@@ -1,24 +1,18 @@
 <template>
   <div id="app">
-    <h1>Vue 2 Template Explorer (Vue version: {{version}})</h1>
+    <h1>Vue 2 Template Explorer (Vue version: {{ version }})</h1>
     <label class="with-toggle">
-      <input type="checkbox" v-model="stripWith">
+      <input type="checkbox" v-model="stripWith" />
       Strip with?
     </label>
     <label class="server-toggle">
-      <input type="checkbox" v-model="serverRender">
+      <input type="checkbox" v-model="serverRender" />
       Server Render?
     </label>
     <div class="main">
-      <codemirror
-        :value="input"
-        :options="inputOptions"
-        @input="onInput">
+      <codemirror :value="input" :options="inputOptions" @input="onInput">
       </codemirror>
-      <codemirror
-        :value="output.code"
-        :options="outputOptions">
-      </codemirror>
+      <codemirror :value="output.code" :options="outputOptions"> </codemirror>
       <pre class="error" v-if="output.errors.length">
         <div v-for="e in output.errors" :key="String(e)">{{e}}</div>
       </pre>
@@ -45,7 +39,7 @@ import stripWith from 'vue-template-es2015-compiler'
 export default {
   name: 'app',
   components: { codemirror },
-  data () {
+  data() {
     return {
       input: '',
       version: Vue.version,
@@ -56,22 +50,24 @@ export default {
         mode: 'text/html',
         theme: 'base16-light',
         lineNumbers: true,
-        line: true
+        line: true,
       },
       outputOptions: {
         tabSize: 2,
         mode: 'text/javascript',
         readOnly: true,
-        theme: 'base16-dark'
-      }
+        theme: 'base16-dark',
+      },
     }
   },
   computed: {
-    output () {
+    output() {
       if (!this.input.trim()) {
         return { errors: [], code: '' }
       }
-      const res = VueTemplateCompiler.compile(this.input, { preserveWhitespace: false })
+      const res = VueTemplateCompiler.compile(this.input, {
+        preserveWhitespace: false,
+      })
       if (!res.errors.length) {
         let code = this.serverRender
           ? this.compileServer()
@@ -81,17 +77,21 @@ export default {
         }
         return {
           errors: [],
-          code: beautify(code, { indent_size: 2, wrap_line_length: 80, jslint_happy: true })
+          code: beautify(code, {
+            indent_size: 2,
+            wrap_line_length: 80,
+            jslint_happy: true,
+          }),
         }
       } else {
         return {
           errors: res.errors,
-          code: ''
+          code: '',
         }
       }
-    }
+    },
   },
-  mounted () {
+  mounted() {
     const hashInput = window.location.hash.slice(1)
     this.input = hashInput
       ? decodeURIComponent(hashInput)
@@ -105,20 +105,20 @@ export default {
       window.location.hash = encodeURIComponent(input)
     }, 500),
 
-    setHeight () {
+    setHeight() {
       const mirrors = [...this.$el.querySelectorAll('.CodeMirror')]
       const top = mirrors[0].getBoundingClientRect().top
       const height = window.innerHeight - top
-      mirrors.forEach(m => m.style.height = height + 'px')
+      mirrors.forEach((m) => (m.style.height = height + 'px'))
     },
     compileServer() {
       Vue.config.silent = true
-      const vm = new Vue({template: this.input})
+      const vm = new Vue({ template: this.input })
       renderVueComponentToString(vm, () => {})
       Vue.config.silent = false
       return vm.$options.render.toString()
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -153,14 +153,15 @@ h1 {
   right: 0;
   left: 50%;
   background-color: #f33;
-  font-size: .9em;
+  font-size: 0.9em;
   color: #fff;
   font-family: Menlo;
   padding: 1em;
   margin: 0;
 }
 
-.with-toggle, .server-toggle {
+.with-toggle,
+.server-toggle {
   position: fixed;
   top: 1em;
   right: 15px;
